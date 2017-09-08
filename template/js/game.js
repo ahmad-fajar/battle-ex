@@ -267,6 +267,7 @@ var Game = (function() {
      * */
     // Edited
     function getVisionEmotion(visionResult) {
+        // console.log(visionResult);
         if (!visionResult.responses || visionResult.responses.length != 1 || visionResult.responses[0].error || visionResult.responses[0].faceAnnotations.length != 1) {
             console.log("Error in vision result:", visionResult);
             UI.snackbar({message: "Cannot get 'expression'"});

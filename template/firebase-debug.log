@@ -1,0 +1,25 @@
+[debug] [2017-09-08T06:43:04.317Z] ----------------------------------------------------------------------
+[debug] [2017-09-08T06:43:04.322Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\fajar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-09-08T06:43:04.322Z] CLI Version:   3.10.0
+[debug] [2017-09-08T06:43:04.322Z] Platform:      win32
+[debug] [2017-09-08T06:43:04.322Z] Node Version:  v8.4.0
+[debug] [2017-09-08T06:43:04.323Z] Time:          Fri Sep 08 2017 13:43:04 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-09-08T06:43:04.323Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-08T06:43:04.352Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-08T06:43:04.352Z] > authorizing via signed-in user
+[debug] [2017-09-08T06:43:04.357Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-09-08T06:43:04.358Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/kIZPn1DSVyJkYxHC2pqTAmglzwl_HoW69SwcnaDLU6Q',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Sep 08 2017 13:43:04 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-09-08T06:43:04.639Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-08T06:43:04.648Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/battle-ex  
+ Fri Sep 08 2017 13:43:04 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-09-08T06:43:05.823Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-08T06:43:05.825Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/battle-ex/tokens  
+ Fri Sep 08 2017 13:43:05 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-09-08T06:43:06.838Z] <<< HTTP RESPONSE 200
+[info] 
