@@ -30,7 +30,7 @@ var Game = (function() {
         ANGRY: {label: "Angry", visionKey: "angerLikelihood"}
     };
     var EMOTION_SCALE = ["UNLIKELY", "VERY_LIKELY", "LIKELY", "POSSIBLE"];
-    var UNKNOWN_EMOTION = {label: "Unknown", likelihood: "???"};
+    var UNKNOWN_EMOTION = {label: "Face Undefined or No Face", likelihood: "???"};
 
     //ui elements
     var create;
@@ -146,13 +146,23 @@ var Game = (function() {
     function addImageToGame(gameRef, game, gcsPath, downloadURL) {
         var data = {state: STATE.UPLOADED_PICTURE};
 
+        // >>> edited
         if (game.creator.uid == firebase.auth().currentUser.uid) {
-            data["creator/gcsPath"] = gcsPath;
+            data["creator/gcsPath"] = downloadURL;
             data["creator/downloadURL"] = downloadURL;
         } else {
-            data["joiner/gcsPath"] = gcsPath;
+            data["joiner/gcsPath"] = downloadURL;
             data["joiner/downloadURL"] = downloadURL;
         }
+
+        // >>> original
+        // if (game.creator.uid == firebase.auth().currentUser.uid) {
+        //     data["creator/gcsPath"] = gcsPath;
+        //     data["creator/downloadURL"] = downloadURL;
+        // } else {
+        //     data["joiner/gcsPath"] = gcsPath;
+        //     data["joiner/downloadURL"] = downloadURL;
+        // }
 
         gameRef.update(data);
     }
@@ -255,16 +265,12 @@ var Game = (function() {
      * Either, Happy, Surprised, Angry or Unknown.
      *
      * */
+    // Edited
     function getVisionEmotion(visionResult) {
-        if (!visionResult.responses || visionResult.responses.length != 1 || visionResult.responses[0].error) {
+        if (!visionResult.responses || visionResult.responses.length != 1 || visionResult.responses[0].error || visionResult.responses[0].faceAnnotations.length != 1) {
             console.log("Error in vision result:", visionResult);
-            UI.snackbar({message: "Error getting Vision API Result"});
-            return
-        }
-
-        if (visionResult.responses[0].faceAnnotations.length != 1) {
-            UI.snackbar({message: "No face in image"});
-            return
+            UI.snackbar({message: "Cannot get 'expression'"});
+            return UNKNOWN_EMOTION
         }
 
         var faceData = visionResult.responses[0].faceAnnotations[0];
@@ -280,6 +286,33 @@ var Game = (function() {
 
         return UNKNOWN_EMOTION
     }
+
+    // >>> Original
+    // function getVisionEmotion(visionResult) {
+    //     if (!visionResult.responses || visionResult.responses.length != 1 || visionResult.responses[0].error) {
+    //         console.log("Error in vision result:", visionResult);
+    //         UI.snackbar({message: "Error getting Vision API Result"});
+    //         return
+    //     }
+
+    //     if (visionResult.responses[0].faceAnnotations.length != 1) {
+    //         UI.snackbar({message: "No face in image"});
+    //         return
+    //     }
+
+    //     var faceData = visionResult.responses[0].faceAnnotations[0];
+    //     console.log("Face Data: ", faceData);
+    //     for (var likelihood of EMOTION_SCALE) {
+    //         for (var key in EMOTIONS) {
+    //             var emotion = EMOTIONS[key];
+    //             if (faceData[emotion.visionKey] == likelihood) {
+    //                 return {label: emotion.label, likelihood: likelihood};
+    //             }
+    //         }
+    //     }
+
+    //     return UNKNOWN_EMOTION
+    // }
 
     /*
     * Add the current player's emotion data to the current game

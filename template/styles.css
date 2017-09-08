@@ -3,19 +3,6 @@
   display: none;
 }
 
-#google-signin {
-  margin-top: 20px;
-}
-
-#google-signin img {
-  cursor: pointer;
-}
-
-#google-signin strong {
-  display: block;
-  margin-bottom: 20px;
-}
-
 /* chat styling */
 #chat textarea {
   width: 100%;
@@ -29,6 +16,10 @@
 
 #chat-messages {
   overflow-y: auto;
+}
+
+#chat #chat-messages {
+  display: none;
 }
 
 #send-chat {

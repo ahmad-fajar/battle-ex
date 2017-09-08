@@ -26,9 +26,11 @@ var Vision = (function() {
      * Build the object structure for a Vision API request and return it.
      * */
     function buildVisionRequest(gcsPath) {
+        // console.log('OriPath>>>',gcsPath)
+        // gcsPath = 'http://i.dailymail.co.uk/i/pix/2014/09/06/1409997457433_wps_12_Gerard_Butler_TELEVISION_.jpg'
         return {
             requests: [{
-                image: {source: {gcsImageUri: gcsPath}},
+                image: {source: {imageUri: gcsPath}},
                 features: [{type: "FACE_DETECTION", maxResults: 1}]
             }]
         };
@@ -48,6 +50,7 @@ var Vision = (function() {
             request.open("POST", url);
             request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             request.send(JSON.stringify(buildVisionRequest(gcsPath)));
+
             request.onreadystatechange = function() {
                 if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
                     var result = JSON.parse(request.responseText);

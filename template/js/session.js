@@ -69,19 +69,19 @@ var Session = (function() {
         }
     }
 
-    /*
-     * Sign in with you Google Account
-     * */
-    function signInWithGoogle() {
-        console.log("attempting to sign in with Google");
-        var provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope("https://www.googleapis.com/auth/userinfo.email");
-        provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+    // /*
+    //  * Sign in with you Google Account
+    //  * */
+    // function signInWithGoogle() {
+    //     console.log("attempting to sign in with Google");
+    //     var provider = new firebase.auth.GoogleAuthProvider();
+    //     provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+    //     provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
 
-        firebase.auth().signInWithPopup(provider).catch(function(error) {
-            console.log("Google Login error: ", error);
-        });
-    }
+    //     firebase.auth().signInWithPopup(provider).catch(function(error) {
+    //         console.log("Google Login error: ", error);
+    //     });
+    // }
 
     /*
      * Close the login dialog, but only if it's open
@@ -145,8 +145,8 @@ var Session = (function() {
             });
             document.querySelector("#sign-in").addEventListener("click", signInWithEmailandPassword);
 
-            //google login
-            document.querySelector("#google-signin img").addEventListener("click", signInWithGoogle);
+            // //google login
+            // document.querySelector("#google-signin img").addEventListener("click", signInWithGoogle);
 
             //create accounts
             createDialog = document.querySelector("#create-account-dialog");

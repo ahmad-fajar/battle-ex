@@ -32,7 +32,9 @@ Config = function() {
         // Replace with an API key for Google Cloud Vision API
         // DO NOT DO THIS IN PRODUCTION!!! For Demo purposes only.
         visionAPI: {
-            key: 'AIzaSyCgT4EmJ13yIX1Lwu-xPE4Yd_nnifEtAsc'
+            // key: 'AIzaSyCl7oY_gdN1OLj8j2ZouMQIzCDH4vEsjKY' // firebase key
+            key: 'AIzaSyBdB6y9dDgBFWf5YtXSU-IHzncvt7I5RQ0' // server key
+            // key: 'AIzaSyCgT4EmJ13yIX1Lwu-xPE4Yd_nnifEtAsc' // key lain
         }
     }
 }();
